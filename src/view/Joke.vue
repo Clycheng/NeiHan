@@ -40,6 +40,9 @@
                         </div>
                     </li>
               </ul>
+              <footer>
+                    <div class = "foot"><span @click="add">加载更多</span></div>
+             </footer>
           </div>
            <side-bar></side-bar>
       </section>
@@ -60,23 +63,27 @@ export default {
         NavHeader,
         SideBar
     },
-  mounted() {
-      this.add()
+ mounted() {
+      this.create()
   },
   methods: {
-      add() {
-          
+      create() {
           this.$http.get('api'+'?content_type=-102').then((response)=> {
               let res = response.data.data.data
-            // console.log(response.data.data.data.uer);  
                 this.DetailList = res;
-                // this.Image = res.group.large_image.url_list
-                console.log(res);
-                // console.log(this.DetailList.group.user);
+             
 
-          })
-          
+          })  
+      },
+      add() {
+           this.$http.get('api'+'?content_type=-102').then((response)=> {
+              let res = response.data.data.data  
+                this.DetailList = this.DetailList.concat(res);
+
+          }) 
       }
+
+
   }
   
 }
@@ -296,5 +303,15 @@ section .content-left {
 .sidebar .box.qq-contact-info ul li {
     height: 24px;
     line-height: 24px;
+}
+footer  .foot {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+footer  .foot span:hover {
+    color: rgb(255,129,171);
+    cursor: pointer
 }
 </style>

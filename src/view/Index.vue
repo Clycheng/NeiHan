@@ -70,23 +70,15 @@ export default {
   methods: {
       create() {
           this.$http.get('api'+'?content_type=-102').then((response)=> {
-              let res = response.data.data.data
-            // console.log(response.data.data.data.uer);  
+              let res = response.data.data.data;
                 this.DetailList = res;
-                // this.Image = res.group.large_image.url_list
-                console.log(res);
-                // console.log(this.DetailList.group.user);
 
           })  
       },
       add() {
            this.$http.get('api'+'?content_type=-102').then((response)=> {
-              let res = response.data.data.data
-            // console.log(response.data.data.data.uer);  
+              let res = response.data.data.data;
                 this.DetailList = this.DetailList.concat(res);
-                // this.Image = res.group.large_image.url_list
-                console.log(res);
-                // console.log(this.DetailList.group.user);
 
           }) 
       }
